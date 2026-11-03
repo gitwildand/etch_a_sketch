@@ -7,9 +7,12 @@
 }
 
 .square {
-    width: 60px;
-    height: 60px;
+    
     box-sizing: border-box;
     border: 1px solid #ccc;
     background-color: white;
+}
+
+.square.active {
+    background-color: black;
 }
