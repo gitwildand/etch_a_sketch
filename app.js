@@ -4,6 +4,13 @@ const TOTAL_SIZE = 960;
 const DEFAULT_SIZE = 16;
 const MAX_SIZE = 100;
 
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r},${g},${b})`;
+}
+
 function createGrid(size) {
     container.innerHTML = '';
 
@@ -16,8 +23,14 @@ function createGrid(size) {
         square.style.width = `${squareSize}px`;
         square.style.height = `${squareSize}px`;
 
+        const squareColor = getRandomColor();
+
+        let darkness = 0;
+
         square.addEventListener('mouseover', () => {
-            square.classList.add('active');
+            square.style.backgroundColor = squareColor;
+            darkness = Math.min(darkness + 0.1, 1);
+            square.style.opacity = darkness;
         });
 
         container.appendChild(square);
